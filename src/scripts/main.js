@@ -1,11 +1,33 @@
-import '../styles/main.sass';
-import bg from './../assets/images/dark_clouds.jpeg';
+import gsap from 'gsap';
 
-const init = () => {
-    document.querySelector('[data-bgImage]').src = bg;
-    const elem = document.querySelector('.target')
-    console.log(elem);
-    console.log(elem.getBoundingClientRect());
+import '../styles/main.sass';
+
+import { CircleCursor } from './components/Cursor';
+import { ClippedBackground } from './components/ClippedBackground';
+
+let cursor;
+let clippedBackground;
+let links;
+let timeline;
+
+const initElements = () => {
+    timeline = gsap.timeline();
+    cursor = new CircleCursor(document.querySelector('[data-cursor]'));
+    clippedBackground = new ClippedBackground(document.querySelector('[data-clipped-background]'));
+    links = document.querySelectorAll('[data-link], a');
 }
 
-document.addEventListener('load', init());
+const initEvents = () => {
+    timeline.add(clippedBackground.getTimeline());
+    links.forEach(link => {
+        link.addEventListener('mouseenter', (e) => cursor.onEnterLink(e.target));
+        link.addEventListener('mouseleave', (e) => cursor.onLeaveLink(e.target));
+    });
+}
+
+const onLoad = () => {
+    initElements();
+    initEvents();
+}
+
+document.addEventListener('load', onLoad());
