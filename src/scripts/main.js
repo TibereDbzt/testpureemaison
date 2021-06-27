@@ -35,6 +35,8 @@ const initEvents = () => {
         link.addEventListener('mouseenter', (e) => cursor.onEnterLink(e.target));
         link.addEventListener('mouseleave', (e) => cursor.onLeaveLink(e.target));
     });
+    document.addEventListener('mouseenter', e => cursor.onEnterScreen());
+    document.addEventListener('mouseleave', e => cursor.onLeaveScreen());
 }
 
 const onLoad = () => {
