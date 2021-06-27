@@ -30,6 +30,7 @@ const initEvents = () => {
     timeline.add(clippedBackground.animateOpacity(), '<');
     timeline.add(clippedBackground.animateClipPath(), '+=1');
     timeline.add(skewYOpactityReveal(title), '<');
+    timeline.add(gsap.fromTo(title, { borderBottomWidth: 0 }, { borderBottomWidth: 100, duration: 1, ease: 'power4.inOut' }), '<');
     links.forEach(link => {
         link.addEventListener('mouseenter', (e) => cursor.onEnterLink(e.target));
         link.addEventListener('mouseleave', (e) => cursor.onLeaveLink(e.target));
