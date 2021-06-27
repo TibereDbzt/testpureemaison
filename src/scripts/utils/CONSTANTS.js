@@ -10,7 +10,8 @@ const COLORS = {
 };
 
 const EASES = {
-    markedInOut: CustomEase.create("custom", "M0,0 C0.408,0.034 0.346,0.12 0.426,0.536 0.508,0.966 0.686,1 1,1 ")
+    markedInOut: CustomEase.create("custom", "M0,0 C0.408,0.034 0.346,0.12 0.426,0.536 0.508,0.966 0.686,1 1,1 "),
+    markedIn: CustomEase.create("custom", "M0,0 C0.876,0 0.526,1 1,1 ")
 };
 
 export { COLORS, EASES };

@@ -26,8 +26,13 @@ let config = {
                 test: /\.html$/,
                 loader: 'html-loader',
                 options: {
-                  attrs: [":src"]
-                }
+                  sources: {
+                      list: [{
+                          attribute: 'src',
+                          type: 'src'
+                      }]
+                  }
+              }
             },
             {
                 test: /\.js$/,
@@ -43,14 +48,7 @@ let config = {
             {
                 test: /\.sass$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', {
-                    loader: 'postcss-loader',
-                    options: {
-                        config: {
-                            ctx: {
-                                env: 'production'
-                            }
-                        }
-                    }
+                    loader: 'postcss-loader'
                 }, 'sass-loader']
             },
       // {
