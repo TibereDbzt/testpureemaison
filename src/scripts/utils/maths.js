@@ -1,6 +1,5 @@
 
 const getCircleLength = (el) => {
-    console.log(el);
     return Math.round(2 * Math.PI * parseInt(el.getAttribute('r'), 10)) + 3;
 }
 
