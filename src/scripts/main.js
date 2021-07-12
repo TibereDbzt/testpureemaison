@@ -7,6 +7,7 @@ import { ClippedBackground } from './components/ClippedBackground';
 import { Loader } from './components/Loader';
 import { skewYOpactityReveal } from './utils/animations';
 import { split } from './utils/text';
+import { SvgElement } from './components/SvgElement';
 
 let loader;
 let cursor;
@@ -24,6 +25,7 @@ const initElements = () => {
     title = document.querySelector('[data-title]');
     split(title, '');
 }
+
 
 const initEvents = () => {
     timeline.add(loader.getTimeline());
