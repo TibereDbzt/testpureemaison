@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "gsap": "npm:@gsap/member@^3.7.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "splitting": "^1.0.6"
   }
 }

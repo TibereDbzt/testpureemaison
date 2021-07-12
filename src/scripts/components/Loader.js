@@ -1,4 +1,5 @@
 import { gsap } from 'gsap';
+import { getDistanceTo } from './../utils/getters';
 
 export class Loader {
 
@@ -7,12 +8,13 @@ export class Loader {
             container: el,
             target: target
         };
+        this.callback = callback;
+        this.translateX = this.calculateTranslateX();
         this.timeline = gsap.timeline();
         this.progress = 0;
-        this.createSlideAnimation();
     }
 
-    calculateTranslate () {
+    calculateTranslateX () {
         const loaderBounds = this.DOM.container.getBoundingClientRect();
         const targetBounds = this.DOM.target.getBoundingClientRect();
         const translateX = {
@@ -31,16 +33,17 @@ export class Loader {
     incrementLoader () {
         this.progress += 1;
         this.DOM.container.innerHTML = this.progress;
-        if (this.progress >= 100) clearInterval(this.loading);
+        if (this.progress >= 100) {
+            clearInterval(this.loading);
+            this.callback();
+        }
     }
 
-    createSlideAnimation () {
-        this.timeline.fromTo(this.DOM.container, { opacity: 0 }, { opacity: 1, delay: 0.4, duration: 1, ease: 'power2.inOut', onComplete: () => this.startLoader()});
-        this.timeline.fromTo(this.DOM.container, { translateX: this.calculateTranslate().start }, { translateX: this.calculateTranslate().end, duration: 3, ease: 'power3.inOut' });
-    }
-    
-    getTimeline () {
+    animateIn() {
+        this.timeline.add(gsap.fromTo(this.DOM.container, { opacity: 0 }, { opacity: 1, delay: 0.4, duration: 1, ease: 'power2.inOut' }));
+        this.timeline.call(this.startLoader.bind(this), [], '>');
+        this.timeline.add(gsap.fromTo(this.DOM.container, { translateX: - getDistanceTo(this.DOM.container, 'left') + 100 }, { translateX: getDistanceTo(this.DOM.container, 'right') - 150, duration: 3, ease: 'power3.inOut' }, '>'));
         return this.timeline;
     }
-    
+
 }

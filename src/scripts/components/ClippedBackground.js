@@ -13,7 +13,6 @@ export class ClippedBackground {
         this.DOM.image.src = backgroundImage;
         this.opacityTimeline = gsap.timeline();
         this.clipPathTimeline = gsap.timeline();
-        // this.createInAnimation();
     }
 
     animateOpacity () {

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-     <header class="hero section">
+     <header data-hero-section class="hero section">
           <div data-clipped-background class="hero__background flex-centered">
                <div class="hero__background__container">
                     <img data-background-image class="hero__background__image" src="./assets/images/dark_clouds_min.jpeg" alt="dark clouds background image">
@@ -18,40 +18,43 @@
                <div class="hero__content__text">
                     <div>
                          <a class="target text-block text-block--marged" href="https://pureemaison.com/" target="_blank" rel="noopener noreferrer">
-                              <div class="text-block__line">
-                                   <span class="text-block__line__inner">purée maison</span>
+                              <div data-hero-text class="text-block__line">
+                                   <span data-hero-text-inner class="text-block__line__inner">purée maison</span>
                               </div>
-                              <div class="text-block__line">
-                                   <span class="text-block__line__inner">www.pureemaison.com</span>
+                              <div data-hero-text class="text-block__line">
+                                   <span data-hero-text-inner class="text-block__line__inner">www.pureemaison.com</span>
                               </div>
                          </a>
                          <div class="text-block">
-                              <h2 class="text-block__line">
-                                   <span class="text-block__line__inner">developer exercice</span>
+                              <h2 data-hero-text class="text-block__line">
+                                   <span data-hero-text-inner class="text-block__line__inner">developer exercice</span>
                               </h2>
-                              <h2 class="text-block__line">
-                                   <span class="text-block__line__inner">skill test 2021</span>     
+                              <h2 data-hero-text class="text-block__line">
+                                   <span data-hero-text-inner class="text-block__line__inner">skill test 2021</span>     
                               </h2>
                          </div>
                     </div>
                     <div class="text-block text-block--right">
-                         <div class="text-block__line">
-                              <span class="text-block__line__inner">test duration</span>
+                         <div data-hero-text class="text-block__line">
+                              <span data-hero-text-inner class="text-block__line__inner">test duration</span>
                          </div>
-                         <div class="text-block__line">
-                              <span class="text-block__line__inner">/24 hours</span>
+                         <div data-hero-text class="text-block__line">
+                              <span data-hero-text-inner class="text-block__line__inner">/24 hours</span>
                          </div>
                     </div>
                </div>
                <div class="flex-centered">
-                    <h1 data-loader-target data-anim-skew-opacity data-title class="hero__content__title">exercice n°</h1>
+                    <h1 data-loader-target data-anim-skew-opacity data-hero-title class="hero__content__title">
+                         <span data-hero-title-content class="hero__content__title__content">exercice n°</span>
+                         <span data-hero-title-border class="hero__content__title__border"></span>
+                    </h1>
                     <div data-loader class="loader">0</div>
                </div>
                <div class="flex-centered">
-                    <div data-link data-link-react class="circle-button hero__content__scroll-button">
+                    <div data-hero-scroll-button data-link data-link-react class="circle-button hero__content__scroll-button">
                          <div class="circle-button__content">
                               <span data-link-text class="circle-button__content__text">scroll</span>
-                              <svg data-link-icon class="circle-button__content__icon" width="9" height="13" viewBox="0 0 9 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <svg data-hero-scroll-button-icon data-link-icon class="circle-button__content__icon" width="9" height="13" viewBox="0 0 9 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                    <g clip-path="url(#clip0)">
                                         <path d="M3.69146 12.1053L5.31909 12.1053L5.31909 -1.90735e-06L3.69146 -2.04964e-06L3.69146 12.1053Z" fill="black"/>
                                         <path d="M9.00003 8.16611L7.84912 6.92978L3.3491 11.7638L4.50002 13.0001L9.00003 8.16611Z" fill="black"/>

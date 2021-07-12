@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 import { mousePos as mouse } from './../utils/getters';
 import { COLORS, EASES } from './../utils/CONSTANTS';
-import { SvgElement } from './SvgElement';
+import { SvgElement } from '../modules/SvgElement';
 
 export class CircleCursor extends SvgElement {
 
