@@ -8,7 +8,6 @@ export class Loader {
             container: el,
             target: target
         };
-        this.callback = callback;
         this.translateX = this.calculateTranslateX();
         this.timeline = gsap.timeline();
         this.progress = 0;
@@ -18,7 +17,7 @@ export class Loader {
         const loaderBounds = this.DOM.container.getBoundingClientRect();
         const targetBounds = this.DOM.target.getBoundingClientRect();
         const translateX = {
-            start: - (loaderBounds.x - targetBounds.x + loaderBounds.width + 170),
+            start: -(loaderBounds.x - targetBounds.x + loaderBounds.width + 170),
             end: targetBounds.x + targetBounds.width + 170 - loaderBounds.x
         };
         return translateX;
@@ -35,7 +34,6 @@ export class Loader {
         this.DOM.container.innerHTML = this.progress;
         if (this.progress >= 100) {
             clearInterval(this.loading);
-            this.callback();
         }
     }
 

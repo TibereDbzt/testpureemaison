@@ -18,7 +18,7 @@ const initElements = () => {
     cursor = new CircleCursor(document.querySelector('[data-cursor]'));
     heroSection = new HeroSection(document.querySelector('[data-hero-section]'));
     links = document.querySelectorAll('[data-link], a');
-}
+};
 
 const initEvents = () => {
     timeline.add(loader.animateIn());
@@ -29,11 +29,11 @@ const initEvents = () => {
     });
     document.addEventListener('mouseenter', e => cursor.onEnterScreen());
     document.addEventListener('mouseleave', e => cursor.onLeaveScreen());
-}
+};
 
 const onLoad = () => {
     initElements();
     initEvents();
-}
+};
 
 document.addEventListener('load', onLoad());

@@ -32,7 +32,7 @@ export class HeroSection {
     animateTitle() {
         const timeline = gsap.timeline();
         timeline.add(skewYOpactityReveal(this.DOM.title.content));
-        timeline.from(this.DOM.title.border, { width: 0, duration: 1.4, ease: EASES.markedOut }, '<+=1.2');
+        timeline.from(this.DOM.title.border, { width: 0, duration: 3, ease: EASES.markedOut }, '<+=1');
         return timeline;
     }
 
