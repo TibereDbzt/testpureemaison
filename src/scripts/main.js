@@ -22,13 +22,21 @@ const initElements = () => {
 
 const initEvents = () => {
     timeline.add(loader.animateIn());
-    timeline.add(heroSection.animateIn(), '=');
+    timeline.add(heroSection.animateUntilLoaded(), '<');
+    timeline.add(heroSection.animateAfterLoaded(), '>+1.5');
     links.forEach(link => {
         link.addEventListener('mouseenter', (e) => cursor.onEnterLink(e.target));
         link.addEventListener('mouseleave', (e) => cursor.onLeaveLink(e.target));
     });
     document.addEventListener('mouseenter', e => cursor.onEnterScreen());
     document.addEventListener('mouseleave', e => cursor.onLeaveScreen());
+    let resizeEnding;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeEnding);
+        resizeEnding = setTimeout(() => {
+            loader.setPosition();
+        }, 500);
+    });
 }
 
 const onLoad = () => {

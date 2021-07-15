@@ -1,4 +1,19 @@
 .loader
     position: absolute
+    left: 30px
+    right: unset
     font: 110px $RebondGrotesqueLight
     letter-spacing: -7px
+
+    .loader__mask
+        height: 130px
+        overflow: hidden
+
+        .loader__roller
+            display: flex
+            flex-direction: column-reverse
+
+            .loader__item
+                display: block
+                right: 0
+
