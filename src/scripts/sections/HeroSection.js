@@ -62,7 +62,7 @@ export class HeroSection {
         timeline.add(this.background.animateClipPath(), '');
         timeline.add(this.animateTitle(), '<+=0.5');
         timeline.add(this.animateTexts(), '<+=0.5');
-        // timeline.add(this.animateScrollButton(), '<');
+        timeline.add(this.animateScrollButton(), '<');
         return timeline;
     }
 

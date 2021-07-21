@@ -1,5 +1,7 @@
 import { gsap } from 'gsap';
+import { each, reverse } from 'lodash';
 import { EASES } from '../utils/CONSTANTS';
+import { split } from '../utils/text';
 import { getDistanceTo } from './../utils/getters';
 
 export class Loader {
@@ -19,7 +21,7 @@ export class Loader {
     }
 
     initElements() {
-        gsap.set(this.DOM.roller, { translateY: getDistanceTo(this.DOM.roller, 'bottom', this.DOM.mask, 'top') });
+        gsap.set(this.DOM.roller, { translateY: getDistanceTo(this.DOM.percent, 'top', this.DOM.mask, 'top') });
     }
 
     startLoader() {
@@ -28,15 +30,21 @@ export class Loader {
         }, 25);
     }
 
-    calculateTranslateX() {
-        this.translateX = getDistanceTo(this.DOM.content, 'left', this.DOM.target, 'right');
-    }
-
     animateRoll() {
-        console.log(this.translateX);
         const timeline = gsap.timeline();
-        timeline.to(this.DOM.roller, { translateY: 0, duration: 3, ease: EASES.markedInOut });
-        timeline.to(this.DOM.container, { translateX: getDistanceTo(this.DOM.content, 'left', this.DOM.target, 'right') + 30, duration: 3, ease: EASES.markedInOut }, '<');
+        const percentChars = Array.from(this.DOM.percent.querySelectorAll('span'));
+        const contentChars = Array.from(this.DOM.content.querySelectorAll('span'));
+        // timeline.to(this.DOM.roller, { translateY: 0, duration: 3, ease: EASES.markedInOut });
+        timeline.addLabel('toTarget')
+        timeline.to(this.DOM.container, { translateX: getDistanceTo(this.DOM.container, 'left', this.DOM.target, 'left'), duration: 3, ease: 'power2.inOut' }, 'toTarget');
+        each(reverse(percentChars), (char, i) => {
+            timeline.to(char, { translateY: -getDistanceTo(char, 'bottom', this.DOM.mask, 'top'), duration: 0.9, ease: EASES.markedIn, delay: 0.2 * i }, 'toTarget+=0.4');
+        });
+        each(reverse(contentChars), (char, i) => {
+            timeline.to(char, { translateY: getDistanceTo(char, 'bottom', this.DOM.mask, 'bottom'), duration: 1, ease: EASES.markedOut, delay: 0.2 * i }, 'toTarget+=1.2');
+        });
+        timeline.set(this.DOM.target, { opacity: 1 }, '-=0.1');
+        timeline.set(this.DOM.container, { opacity: 0 }, '<');
         return timeline;
     }
 
@@ -58,7 +66,9 @@ export class Loader {
         this.timeline.add(gsap.fromTo(this.DOM.container, { opacity: 0 }, { opacity: 1, delay: 0.4, duration: 1, ease: 'power2.inOut' }));
         this.timeline.call(this.startLoader.bind(this), [], '>');
         this.timeline.add(gsap.to(this.DOM.container, { left: 'unset', right: '30', duration: 3, ease: 'power3.inOut' }, '>')).then(() => {
-            this.timeline.add(this.animateRoll(), '>+=1');
+            split(this.DOM.percent, '');
+            split(this.DOM.content, '');
+            this.timeline.add(this.animateRoll(), '>+=0.5');
         });
         return this.timeline;
     }

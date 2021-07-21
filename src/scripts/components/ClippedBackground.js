@@ -22,8 +22,9 @@ export class ClippedBackground {
     }
 
     animateClipPath () {
-        this.clipPathTimeline.to(this.DOM.container, { rotate: '-90deg', 'clipPath': 'inset(0% round 50%)', duration: 2, ease: EASES.markedInOut});
-        this.clipPathTimeline.to(this.DOM.image, { rotate: '90deg', scale: 0.55, duration: 2, ease: EASES.markedInOut}, "<");
+        this.clipPathTimeline.to(this.DOM.container, { rotate: '-90deg', 'clipPath': 'inset(0% round 50%)', duration: 2, ease: EASES.markedInOut });
+        this.clipPathTimeline.to(this.DOM.image, { rotate: '90deg', duration: 2, ease: EASES.markedInOut }, "<");
+        this.clipPathTimeline.to(this.DOM.image, { scale: 0.6, duration: 1.7, ease: EASES.markedInOut }, "<");
         return this.clipPathTimeline;
     }
     
